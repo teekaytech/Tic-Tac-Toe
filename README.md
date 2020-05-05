@@ -1,6 +1,6 @@
-# Ruby Enumerables
+# Tic Tac Toe Game with Ruby
 
-This is a cloned copy of some of the major enumerable methods, written with Ruby programming language. The goal is to ensure that the newly created methods perform the same function as the original ones.
+This project aims to develop Tic Tac Toe Game with Ruby. The main goal is to put into practice the main concepts of Object Oriented Programming. Particularly, classes and access to their attributes.
 
 ## Getting Started
 
@@ -46,7 +46,6 @@ This project is [MIT](lic.url) licensed.
 
 ## Acknowledgements
 
-- [Ruby API Dock](https://apidock.com/ruby)
 - [Ruby Documentation on Enumerables](https://ruby-doc.org/core-2.6.5/Enumerable.html)
 - [Microverse](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/57421589/)
 - [The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/basic-enumerable-methods#learning-outcomes)
