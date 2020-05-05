@@ -46,6 +46,5 @@ This project is [MIT](lic.url) licensed.
 
 ## Acknowledgements
 
-- [Ruby Documentation on Enumerables](https://ruby-doc.org/core-2.6.5/Enumerable.html)
 - [Microverse](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/57421589/)
 - [The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/basic-enumerable-methods#learning-outcomes)
