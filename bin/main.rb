@@ -44,9 +44,11 @@ while count < 9
       end
     end
   end
+
   count += 1
 end
 
-p p1_move
-p p2_move
-# puts "#{player_one} moves are: #{p1_move} \n #{player_two} moves are: "
+puts "#{player_one} here are your moves: #{p1_move}"
+puts "#{player_two} here are your moves: #{p2_move}"
+
+# We have to confirm if the players will like to play again. If true, we loop the game, else we stop.
