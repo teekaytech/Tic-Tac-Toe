@@ -3,14 +3,16 @@ require './lib/game.rb'
 
 puts 'Welcome to Tic Tac Toe!'
 print 'Enter player 1 name: '
-player_one = gets.chomp
+name = gets.chomp
+player1 = Player.new(name)
 
 print 'Good. Enter player 2 name: '
-player_two = gets.chomp
+name = gets.chomp
+player2 = Player.new(name)
 
-New_game = Game.new(player_one, player_two)
-
-puts New_game.player1
+puts "\nWelcome to Tic Tac Toe!"
+puts "Symbol 'X' represents #{player1.name} on the game board."
+puts "Symbol 'O' represents #{player2.name} on the game board. \nLets Start..."
 
 # puts "\nPlayer 1 is #{player_one} using symbol X. \nPlayer 2 is #{player_two} using symbol O. \n\nLet's Play!"
 

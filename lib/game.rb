@@ -20,14 +20,17 @@ class Game
   def check_move
     # checking if move is valid
   end
+
+  def process_move
+    # contains logic for processing moves.
+  end
 end
 
 class Player
-  attr_accessor :pl1, :pl2
+  attr_accessor :name
 
-  def initialize(pl1, pl2)
-    @pl1 = pl1
-    @pl2 = pl2
+  def initialize(name)
+    @name = name
   end
 
   def move
