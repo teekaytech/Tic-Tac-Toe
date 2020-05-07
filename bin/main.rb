@@ -11,6 +11,16 @@ def display_board(prepared_data, row_separator = '-------------', column_separat
   end
 end
 
+def player_moves(player_name)
+  loop do
+    print "#{player_name}, select your move: "
+    input = gets.chomp.to_i
+    break if input
+
+    print 'Invalid input, try again! '
+  end
+end
+
 puts 'Welcome to Tic Tac Toe!'
 print 'Enter player 1 name: '
 name = gets.chomp
@@ -23,13 +33,38 @@ player2 = Player.new(name)
 puts "\nWelcome to Tic Tac Toe!"
 puts "Symbol 'X' represents #{player1.name} moves on the game board."
 puts "Symbol 'O' represents #{player2.name} moves on the game board."
-puts "Select a cell on the gameboard by entering the number displayed in the cell. \nLets Start..."
+puts "Select a cell on the gameboard by entering the number displayed in the cell. \nLets Start...\n\n"
 
-# board_arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+board_data = (1..9).to_a
+gameboard = Board.new(board_data)
+game_data = gameboard.prepare
+display_board(game_data)
 
-array_data = (1..9).to_a
-gameboard = Board.new(array_data)
-display_board(gameboard.prepare)
+game = Game.new(game_data)
+rounds = 0
+while rounds < game_data.flatten.length
+  if rounds.even?
+    loop do
+      print "#{player1.name}, select your move: "
+      input = gets.chomp.to_i
+      break if game.check_move(input)
+
+      print 'Invalid input, try again! '
+    end
+  else
+    loop do
+      print "#{player2.name}, select your move: "
+      input = gets.chomp.to_i
+      if (input >= 1) && (input <= 9)
+        p2_move << input
+        break
+      else
+        print 'Invalid input, try again! '
+      end
+    end
+  end
+  rounds += 1
+end
 
 # puts "\nPlayer 1 is #{player_one} using symbol X. \nPlayer 2 is #{player_two} using symbol O. \n\nLet's Play!"
 

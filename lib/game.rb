@@ -5,10 +5,6 @@ module Game
     @status = status
   end
 
-  def start
-    # logic to start the game
-  end
-
   def end
     # logic to end the game
   end
@@ -17,12 +13,12 @@ module Game
     # logic to check if the current player has won
   end
 
-  def check_move
-    # checking if move is valid
+  def check_move(input)
+    true if (input >= 1) && (input <= 9)
   end
 
-  def process_move
-    # contains logic for processing moves.
+  def process_move(input)
+    true if 
   end
 end
 
