@@ -1,6 +1,16 @@
 #!/usr/bin/env ruby
 require './lib/game.rb'
 
+def display_board(prepared_data, row_separator = '-------------', column_separator = '|')
+  prepared_data.each do |rows|
+    puts row_separator
+    rows.each do |columns|
+      print "| #{columns} "
+    end
+    puts column_separator
+  end
+end
+
 puts 'Welcome to Tic Tac Toe!'
 print 'Enter player 1 name: '
 name = gets.chomp
@@ -15,9 +25,12 @@ puts "Symbol 'X' represents #{player1.name} moves on the game board."
 puts "Symbol 'O' represents #{player2.name} moves on the game board."
 puts "Select a cell on the gameboard by entering the number displayed in the cell. \nLets Start..."
 
-board_arr = (1..9).each { |val| val.to_i }
-p board_arr
-# gameboard = Board.new()
+# board_arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+array_data = (1..9).to_a
+gameboard = Board.new(array_data)
+display_board(gameboard.prepare)
+
 # puts "\nPlayer 1 is #{player_one} using symbol X. \nPlayer 2 is #{player_two} using symbol O. \n\nLet's Play!"
 
 # # A game board will be displayed to the user, consisting of numbers from 1 to 9

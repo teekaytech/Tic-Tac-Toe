@@ -40,13 +40,27 @@ end
 
 class Board
   attr_accessor :b_values
+
   def initialize(values)
-    @b_calues = values
+    @b_values = values
   end
 
-  def display(values)
-    # logic to display board values
+  def prepare
+    multi_arr = []
+    sub_arr = []
+    count = 0
+    b_values.each do |val|
+      sub_arr.push(val)
+      count += 1
+      if count == 3
+        multi_arr.push(sub_arr)
+        count = 0
+        sub_arr = []
+      end
+    end
+    multi_arr
   end
+
 
   def reload
     # logic to re-initialize the board values
