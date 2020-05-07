@@ -51,7 +51,7 @@ end
 puts "#{player_one} here are your moves: #{p1_move}"
 puts "#{player_two} here are your moves: #{p2_move}"
 
-# After all the rounds, we check if there is a match vertically, horizontally or diagonally.
+# After all the rounds, we check if there is a match vertically,horizontally or diagonally.
 
 # If there is a match in any of the moves by either player, we announce the player as the winner.
 
