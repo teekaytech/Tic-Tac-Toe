@@ -51,4 +51,10 @@ end
 puts "#{player_one} here are your moves: #{p1_move}"
 puts "#{player_two} here are your moves: #{p2_move}"
 
+# After all the rounds, we check if there is a match vertically, horizontally or diagonally.
+
+# If there is a match in any of the moves by either player, we announce the player as the winner.
+
+# If there is no match, we announce the encounter as draw.
+
 # We have to confirm if the players will like to play again. If true, we loop the game, else we stop.
