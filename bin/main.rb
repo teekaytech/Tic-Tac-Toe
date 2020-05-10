@@ -43,5 +43,4 @@ display_board(game_data)
 game = Game.new(game_data)
 game_on = true
 while game_on
-
 end
