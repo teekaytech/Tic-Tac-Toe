@@ -17,9 +17,7 @@ module Game
     true if (input >= 1) && (input <= 9)
   end
 
-  def process_move(input)
-    true if 
-  end
+  def process_move(input) end
 end
 
 class Player
