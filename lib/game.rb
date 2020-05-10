@@ -1,23 +1,40 @@
-module Game
-  attr_accessor :status
+class Game
+  attr_accessor :moves
 
-  def initialize(status)
-    @status = status
+  def initialize(moves)
+    @moves = moves
+  end
+
+  def begin
+    true
   end
 
   def end
-    # logic to end the game
+    false
   end
 
   def check_win
     # logic to check if the current player has won
   end
 
-  def check_move(input)
-    true if (input >= 1) && (input <= 9)
+  def validate_move(input, logo)
+    return false unless input >= 1 && input <= 9
+
+    return false unless moves.any?(input)
+
+    replace_move(input, logo)
   end
 
-  def process_move(input) end
+  private
+
+  def replace_move(input, logo)
+    temp = 0
+    moves.each { |val| temp = moves.index(val) if val == input }
+    moves[temp] = logo
+    moves
+  end
+  # def process_move(input)
+  # end
 end
 
 class Player
@@ -38,23 +55,6 @@ class Board
   def initialize(values)
     @b_values = values
   end
-
-  def prepare
-    multi_arr = []
-    sub_arr = []
-    count = 0
-    b_values.each do |val|
-      sub_arr.push(val)
-      count += 1
-      if count == 3
-        multi_arr.push(sub_arr)
-        count = 0
-        sub_arr = []
-      end
-    end
-    multi_arr
-  end
-
 
   def reload
     # logic to re-initialize the board values
