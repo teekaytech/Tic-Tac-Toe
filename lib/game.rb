@@ -13,8 +13,20 @@ class Game
     false
   end
 
-  def check_win
-    # logic to check if the current player has won
+  def check_win()
+    win_move_positions = [
+      [0, 1, 2],
+      [0, 3, 6],
+      [0, 4, 8],
+      [1, 4, 7],
+      [2, 4, 6],
+      [2, 5, 8],
+      [3, 4, 5],
+      [6, 7, 8]
+    ]
+    return true if win_logic(win_move_positions)
+
+    false
   end
 
   def check_draw
@@ -22,10 +34,7 @@ class Game
     moves.each do |item|
       count += 1 if item.is_a? Integer
     end
-    count
-    # return true if moves.any?(Integer)
-
-    # false
+    count.positive? ? false : true
   end
 
   def draw_message
@@ -47,6 +56,17 @@ class Game
     moves.each { |val| temp = moves.index(val) if val == input }
     moves[temp] = logo
     moves
+  end
+
+  def win_logic(win_move_positions)
+    win_status = false
+    win_move_positions.each do |win_move|
+      first = moves[win_move[0]]
+      second = moves[win_move[1]]
+      third = moves[win_move[2]]
+      win_status = true if (!first.is_a? Integer) && (first == second) && (second == third)
+    end
+    win_status
   end
   # def process_move(input)
   # end

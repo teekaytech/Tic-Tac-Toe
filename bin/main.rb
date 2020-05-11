@@ -16,6 +16,14 @@ def initiate_move(player)
   gets.chomp.to_i
 end
 
+def initiate_check_draw(game)
+  return true unless game.check_draw == true
+
+  display_board(game.moves)
+  puts game.draw_message
+  game.end
+end
+
 puts 'Welcome to Tic Tac Toe!'
 players = 0
 player_names = []
@@ -27,41 +35,39 @@ end
 
 # Initialize player objects
 player1 = Player.new(player_names[0])
-player2 = Player.new(player_names[1])
+player2 = Player.new(player_names[1], 2)
 
 # displaying game/board information
-puts "Symbol 'X' represents #{player1.name} moves on the game board."
-puts "Symbol 'O' represents #{player2.name} moves on the game board."
+puts "Symbol #{player1.icon} represents #{player1.name} moves on the game board."
+puts "Symbol #{player2.icon} represents #{player2.name} moves on the game board."
 puts "Select a cell on the gameboard by entering the number displayed in the cell. \nLets Start...\n\n"
 
 board_data = (1..9).to_a
-gameboard = Board.new(board_data)
+# gameboard = Board.new(board_data)
 
 game = Game.new(board_data)
 game_on = game.begin
+
 while game_on
   display_board(game.moves)
 
   loop do
     move = initiate_move(player1.name)
-    processed_move = game.validate_move(move, 'X')
+    processed_move = game.validate_move(move, player1.icon)
     break unless processed_move == false
 
     puts player1.false_move_message
     display_board(game.moves)
   end
-
-  puts 'check' if game.check_draw >= 5
+  break unless initiate_check_draw(game) == true
 
   loop do
     display_board(game.moves)
     move = initiate_move(player2.name)
-    processed_move = game.validate_move(move, 'O')
+    processed_move = game.validate_move(move, player2.icon)
     break unless processed_move == false
 
     puts player2.false_move_message
   end
-  puts 'check' if game.check_draw >= 5
+  break unless initiate_check_draw(game) == true
 end
-
-puts game.draw_message if game_on == false
