@@ -15,6 +15,6 @@ class Board
       t.add_separator
       t.add_row [moves[6], moves[7], moves[8]]
     end
+    table
   end
-
 end
