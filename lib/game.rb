@@ -17,6 +17,21 @@ class Game
     # logic to check if the current player has won
   end
 
+  def check_draw
+    count = 0
+    moves.each do |item|
+      count += 1 if item.is_a? Integer
+    end
+    count
+    # return true if moves.any?(Integer)
+
+    # false
+  end
+
+  def draw_message
+    'The game ended in a draw!'
+  end
+
   def validate_move(input, logo)
     return false unless input >= 1 && input <= 9
 
@@ -47,6 +62,11 @@ class Player
   def move
     # logic to move (play)
   end
+
+  def false_move_message
+    "Invalid move by #{name}, try again!"
+  end
+
 end
 
 class Board

@@ -14,10 +14,6 @@ def initiate_move(player)
   gets.chomp.to_i
 end
 
-def false_move_message(player)
-  puts "Invalid move by #{player}, try again!"
-end
-
 puts 'Welcome to Tic Tac Toe!'
 players = 0
 player_names = []
@@ -38,20 +34,32 @@ puts "Select a cell on the gameboard by entering the number displayed in the cel
 
 board_data = (1..9).to_a
 gameboard = Board.new(board_data)
-display_board(board_data)
 
 game = Game.new(board_data)
 game_on = game.begin
 while game_on
-  move = initiate_move(player1.name)
-  processed_move = game.validate_move(move, 'X')
-  false_move_message(player1.name) if processed_move == false
   display_board(game.moves)
 
-  move = initiate_move(player2.name)
-  processed_move = game.validate_move(move, 'O')
-  false_move_message(player2.name) if processed_move == false
-  display_board(game.moves)
+  loop do
+    move = initiate_move(player1.name)
+    processed_move = game.validate_move(move, 'X')
+    break unless processed_move == false
 
-  game_on = game.end if move == 6
+    puts player1.false_move_message
+    display_board(game.moves)
+  end
+
+  puts 'check' if game.check_draw >= 5
+
+  loop do
+    display_board(game.moves)
+    move = initiate_move(player2.name)
+    processed_move = game.validate_move(move, 'O')
+    break unless processed_move == false
+
+    puts player2.false_move_message
+  end
+  puts 'check' if game.check_draw >= 5
 end
+
+puts game.draw_message if game_on == false
