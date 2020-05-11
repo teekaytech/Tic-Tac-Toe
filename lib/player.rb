@@ -6,10 +6,6 @@ class Player
     @no_of_obj = val
   end
 
-  def moves
-    # logic to move (play)
-  end
-
   def icon
     @no_of_obj == 1 ? 'X' : 'O'
   end

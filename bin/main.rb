@@ -45,41 +45,46 @@ end
 player1 = Player.new(player_names[0])
 player2 = Player.new(player_names[1], 2)
 
-# displaying game/board information
 puts "Symbol #{player1.icon} represents #{player1.name} moves on the game board."
 puts "Symbol #{player2.icon} represents #{player2.name} moves on the game board."
 puts "Select a cell on the gameboard by entering the number displayed in the cell. \nLets Start...\n\n"
 
-board_data = (1..9).to_a
-game = Game.new(board_data)
-game_on = true
+loop do
+  board_data = (1..9).to_a
+  game = Game.new(board_data)
+  game_on = true
 
-while game_on
-  display_board(game.moves)
-
-  loop do
-    move = initiate_move(player1.name)
-    processed_move = game.validate_move(move, player1.icon)
-    break unless processed_move == false
-
-    puts player1.false_move_message
+  while game_on
     display_board(game.moves)
+
+    loop do
+      move = initiate_move(player1.name)
+      processed_move = game.validate_move(move, player1.icon)
+      break unless processed_move == false
+
+      puts player1.false_move_message
+      display_board(game.moves)
+    end
+    game.increment_rounds
+    break if winner(game, player1)
+
+    break unless initiate_check_draw(game) == true
+
+    loop do
+      display_board(game.moves)
+      move = initiate_move(player2.name)
+      processed_move = game.validate_move(move, player2.icon)
+      break unless processed_move == false
+
+      puts player2.false_move_message
+    end
+    game.increment_rounds
+    break if winner(game, player2)
+
+    break unless initiate_check_draw(game) == true
   end
-  game.increment_rounds
-  break if winner(game, player1)
 
-  break unless initiate_check_draw(game) == true
-
-  loop do
-    display_board(game.moves)
-    move = initiate_move(player2.name)
-    processed_move = game.validate_move(move, player2.icon)
-    break unless processed_move == false
-
-    puts player2.false_move_message
-  end
-  game.increment_rounds
-  break if winner(game, player2)
-
-  break unless initiate_check_draw(game) == true
+  print "Will you like to replay? ('Y' = yes, 'N' = No): "
+  response = gets.chomp
+  break if response.upcase == 'N'
 end
