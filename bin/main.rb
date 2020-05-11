@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 require './lib/game.rb'
-require './lib/board.rb'
 require './lib/player.rb'
 
 def display_board(prepared_data, row_separator = '-------------')
@@ -24,6 +23,16 @@ def initiate_check_draw(game)
   false
 end
 
+def winner(game, player)
+  return false unless game.increment_rounds >= 5
+
+  return false unless game.check_win
+
+  display_board(game.moves)
+  puts player.win_message
+  true
+end
+
 puts 'Welcome to Tic Tac Toe!'
 players = 0
 player_names = []
@@ -33,7 +42,6 @@ while players < 2
   players += 1
 end
 
-# Initialize player objects
 player1 = Player.new(player_names[0])
 player2 = Player.new(player_names[1], 2)
 
@@ -43,8 +51,6 @@ puts "Symbol #{player2.icon} represents #{player2.name} moves on the game board.
 puts "Select a cell on the gameboard by entering the number displayed in the cell. \nLets Start...\n\n"
 
 board_data = (1..9).to_a
-# gameboard = Board.new(board_data)
-
 game = Game.new(board_data)
 game_on = true
 
@@ -59,15 +65,9 @@ while game_on
     puts player1.false_move_message
     display_board(game.moves)
   end
-  p game.increment_rounds
+  game.increment_rounds
+  break if winner(game, player1)
 
-  if game.increment_rounds >= 5
-    if game.check_win
-      display_board(game.moves)
-      puts player1.win_message
-      break
-    end
-  end
   break unless initiate_check_draw(game) == true
 
   loop do
@@ -78,7 +78,8 @@ while game_on
 
     puts player2.false_move_message
   end
-  p game.increment_rounds
+  game.increment_rounds
+  break if winner(game, player2)
 
   break unless initiate_check_draw(game) == true
 end

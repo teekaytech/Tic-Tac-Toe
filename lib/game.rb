@@ -65,6 +65,4 @@ class Game
     end
     win_status
   end
-  # def process_move(input)
-  # end
 end
