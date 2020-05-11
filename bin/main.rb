@@ -21,7 +21,7 @@ def initiate_check_draw(game)
 
   display_board(game.moves)
   puts game.draw_message
-  game.end
+  false
 end
 
 puts 'Welcome to Tic Tac Toe!'
@@ -46,7 +46,7 @@ board_data = (1..9).to_a
 # gameboard = Board.new(board_data)
 
 game = Game.new(board_data)
-game_on = game.begin
+game_on = true
 
 while game_on
   display_board(game.moves)
@@ -59,6 +59,15 @@ while game_on
     puts player1.false_move_message
     display_board(game.moves)
   end
+  p game.increment_rounds
+
+  if game.increment_rounds >= 5
+    if game.check_win
+      display_board(game.moves)
+      puts player1.win_message
+      break
+    end
+  end
   break unless initiate_check_draw(game) == true
 
   loop do
@@ -69,5 +78,7 @@ while game_on
 
     puts player2.false_move_message
   end
+  p game.increment_rounds
+
   break unless initiate_check_draw(game) == true
 end

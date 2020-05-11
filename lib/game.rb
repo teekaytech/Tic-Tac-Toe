@@ -1,19 +1,16 @@
 class Game
-  attr_accessor :moves
+  attr_accessor :moves, :rounds
 
   def initialize(moves)
     @moves = moves
+    @rounds = 0
   end
 
-  def begin
-    true
+  def increment_rounds
+    @rounds += 1
   end
 
-  def end
-    false
-  end
-
-  def check_win()
+  def check_win
     win_move_positions = [
       [0, 1, 2],
       [0, 3, 6],

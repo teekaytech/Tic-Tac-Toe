@@ -17,4 +17,8 @@ class Player
   def false_move_message
     "Invalid move by #{name}, try again!"
   end
+
+  def win_message
+    "Congratulations!!! #{name} is the Winner..."
+  end
 end
