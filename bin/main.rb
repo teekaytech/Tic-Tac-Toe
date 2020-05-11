@@ -31,7 +31,7 @@ puts 'Welcome to Tic Tac Toe!'
 print 'Enter player 1 name: '
 player1 = Player.new(gets.chomp)
 print 'Enter player 2 name: '
-player2 = Player.new(gets.chomp)
+player2 = Player.new(gets.chomp, 2)
 
 puts "Symbol #{player1.icon} represents #{player1.name} moves on the game board."
 puts "Symbol #{player2.icon} represents #{player2.name} moves on the game board."
