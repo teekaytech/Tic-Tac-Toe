@@ -3,48 +3,35 @@ require './lib/game.rb'
 require './lib/player.rb'
 require './lib/board.rb'
 
-def display_board(prepared_data, row_separator = '-------------')
-  puts row_separator
-  prepared_data.each_with_index do |data, i|
-    print "| #{data} "
-    puts "| \n#{row_separator}" if ((i + 1) % 3).zero?
-  end
-end
-
 def initiate_move(player)
   print "#{player}, select your move: "
   gets.chomp.to_i
 end
 
-def initiate_check_draw(game)
+def initiate_check_draw(game, board)
   return true unless game.check_draw == true
 
-  display_board(game.moves)
+  puts board.display_board(game.moves)
   puts game.draw_message
   false
 end
 
-def winner(game, player)
+def winner(game, player, board)
   return false unless game.increment_rounds >= 5
 
   return false unless game.check_win
 
-  display_board(game.moves)
+  puts board.display_board(game.moves)
   puts player.win_message
   true
 end
 
 puts 'Welcome to Tic Tac Toe!'
-players = 0
-player_names = []
-while players < 2
-  print "Enter player #{players + 1} name: "
-  player_names << gets.chomp
-  players += 1
-end
 
-player1 = Player.new(player_names[0])
-player2 = Player.new(player_names[1], 2)
+print 'Enter player 1 name: '
+player1 = Player.new(gets.chomp)
+print 'Enter player 2 name: '
+player2 = Player.new(gets.chomp)
 
 puts "Symbol #{player1.icon} represents #{player1.name} moves on the game board."
 puts "Symbol #{player2.icon} represents #{player2.name} moves on the game board."
@@ -54,25 +41,25 @@ loop do
   board_data = (1..9).to_a
   game = Game.new(board_data)
   game_on = true
+  board = Board.new(board_data)
 
   while game_on
-    display_board(game.moves)
-
+    puts board.display_board(game.moves)
     loop do
       move = initiate_move(player1.name)
       processed_move = game.validate_move(move, player1.icon)
       break unless processed_move == false
 
       puts player1.false_move_message
-      display_board(game.moves)
+      puts board.display_board(game.moves)
     end
     game.increment_rounds
-    break if winner(game, player1)
+    break if winner(game, player1, board)
 
-    break unless initiate_check_draw(game) == true
+    break unless initiate_check_draw(game, board) == true
 
     loop do
-      display_board(game.moves)
+      puts board.display_board(game.moves)
       move = initiate_move(player2.name)
       processed_move = game.validate_move(move, player2.icon)
       break unless processed_move == false
@@ -80,12 +67,11 @@ loop do
       puts player2.false_move_message
     end
     game.increment_rounds
-    break if winner(game, player2)
+    break if winner(game, player2, board)
 
-    break unless initiate_check_draw(game) == true
+    break unless initiate_check_draw(game, board) == true
   end
 
   print "Will you like to replay? ('Y' = yes, 'N' = No): "
-  response = gets.chomp
-  break if response.upcase == 'N'
+  break if gets.chomp.upcase == 'N'
 end

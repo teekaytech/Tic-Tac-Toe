@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
 gem 'rubocop'
-gem 'terminal-table', '~> 1.7', '>= 1.7.3'
+gem 'terminal-table', '~> 1.8'

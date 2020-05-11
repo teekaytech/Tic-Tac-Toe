@@ -1,9 +1,10 @@
 class Player
-  attr_accessor :name, :no_of_obj
+  @no_of_obj = 0
+  attr_accessor :name
 
-  def initialize(name, val = 1)
+  def initialize(name)
     @name = name
-    @no_of_obj = val
+    @no_of_obj += 1
   end
 
   def icon
