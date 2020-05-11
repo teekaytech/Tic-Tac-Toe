@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require './lib/game.rb'
 require './lib/player.rb'
+require './lib/board.rb'
 
 def display_board(prepared_data, row_separator = '-------------')
   puts row_separator
