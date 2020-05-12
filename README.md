@@ -6,7 +6,8 @@ This project aims to develop Tic Tac Toe Game with Ruby. The main goal is to put
 
 To get a local copy up and running follow these simple example steps.
 
-- Clone or download this repository to your local workstation.
+- On GitHub, navigate to the main page of the repository (this page).
+- Under the repository name, locate and click a green button named 'Clone or download'. 
 
 ### Prerequisites
 
