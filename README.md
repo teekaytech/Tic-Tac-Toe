@@ -1,4 +1,4 @@
-# Tic Tac Toe Game with Ruby
+# Tic Tac Toe Game with OOP Ruby
 
 This project aims to develop Tic Tac Toe Game with Ruby. The main goal is to put into practice the main concepts of Object Oriented Programming. Particularly, classes and access to their attributes.
 
