@@ -33,6 +33,22 @@ Tic-tac-toe (American English), noughts and crosses (British English), or Xs and
 ### How to play
 - When the game is started (`bin/main.rb`), the game prompts the two players to enter their names, after which the game displays the board and requests the first player to make a move.
 ![screenshot](/assets/img/shot1.png)
+
+- The game board is a 3 x 3 matrix consisting of numbers from 1 to 9. 
+- The first player moves are represented on the board with 'X', while the second player moves represented with 'O'
+- For a player to have a valid move, the player must select one of the available numbers on the board. Anything aside that represents an invalid move.
+![screenshot](/assets/img/shot2.png)
+
+- Any cell of the board consisting of player move identifiers cannot be reselected. If selected, it is counted as an inalid move and such player is prompted to reselect/remake move as seen above.
+
+- The players make moves one after the other. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. 
+![screenshot](/assets/img/shot3.png)
+
+- If no player succeed in making the above arrangement till all moves are made, the game is ended in a draw.
+![screenshot](/assets/img/shot4.png)
+
+- If the players decide to replay, they can press any key to continue or press 'N' to stop the game.
+
 ## Author
 
 👤 **Taofeek Olalere**
