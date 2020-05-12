@@ -15,19 +15,22 @@ To get a local copy up and running follow these simple example steps.
 - Press Enter. Your local clone will be created.
 
 Please Note that you must have github installed on your PC, this can be done [here](https://gist.github.com/derhuerst/1b15ff4652a867391f03).
+
+
 ### Prerequisites
 
 Since all the code is written using ruby, `Ruby Runtime >= 1.9` is required to interpret the code. If you don't have ruby runtime already setup on your computer, follow the instruction for your specific operating system on the [official installation guide](https://www.ruby-lang.org/en/documentation/installation/)
 
 ### Usage
 
-After cloning on your computer, open the folder using your terminal/commandline window and run
+After cloning on your computer, open the folder using your terminal/command prompt window and run
 
-`ruby <name-of-ruby-script>.rb`
+`bin/main.rb`
 
-where `name-of-ruby-script` is any ruby file contained inside the folder, (for instance here, we have main.rb).
+### Introduction to Tic-Tac-Toe Game
+Tic-tac-toe (American English), noughts and crosses (British English), or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. [read-more](https://en.wikipedia.org/wiki/Tic-tac-toe)
 
-  ![screenshot](/assets/img/screen.png)
+### How to play
 
 ## Author
 
@@ -56,3 +59,4 @@ This project is [MIT](lic.url) licensed.
 - [Microverse](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/57421589/)
 - [The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/basic-enumerable-methods#learning-outcomes)
 - [GitHub](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+- [Hitesh Choudhary](https://www.youtube.com/watch?v=qU_gdQ1FvjM)
