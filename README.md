@@ -44,7 +44,7 @@ Tic-tac-toe (American English), noughts and crosses (British English), or Xs and
 - The players make moves one after the other. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.<br>
 ![screenshot](/assets/img/shot3.png)
 
-- If no player succeed in making the above arrangement till all moves are made, the game is ended in a draw.<br>
+- If no player succeed in making the above arrangement till all moves are made, the game is ended in a draw.
 ![screenshot](/assets/img/shot4.png)
 
 - If the players decide to replay, they can press any key to continue or press 'N' to stop the game.
