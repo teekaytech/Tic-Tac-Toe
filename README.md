@@ -31,7 +31,8 @@ After cloning on your computer, open the folder using your terminal/command prom
 Tic-tac-toe (American English), noughts and crosses (British English), or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. [read-more](https://en.wikipedia.org/wiki/Tic-tac-toe)
 
 ### How to play
-
+- When the game is started (`bin/main.rb`), the game prompts the two players to enter their names, after which the game displays the board and requests the first player to make a move.
+![screenshot](/assets/img/shot1.png)
 ## Author
 
 👤 **Taofeek Olalere**
