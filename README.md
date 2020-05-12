@@ -11,7 +11,7 @@ To get a local copy up and running follow these simple steps.
 - Copy the project URL as displayed.
 - If you're running Windows Operating System, open your command prompt. On Linux, Open your terminal.
 - Change the current working directory to the location where you want the cloned directory to be made. Leave as it is if the current location is where you want the project to be.
-- Type `git clone`, and then paste the URL you copied in Step 3.
+- Type `git clone`, and then paste the URL you copied in Step 3.<br>
 `$ git clone https://github.com/teekaytech/Tic-Tac-Toe`
 - Press Enter. Your local copy will be created.
 
