@@ -4,15 +4,16 @@ This project aims to develop Tic Tac Toe Game with Ruby. The main goal is to put
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
-- On GitHub, navigate to the main page of the repository (this page).
-- Under the repository name, locate and click a green button named 'Clone or download'. 
+- On the project GitHub page, navigate to the main page of the repository [this page](https://github.com/teekaytech/Tic-Tac-Toe).
+- Under the repository name, locate and click on a green button named 'Clone or download'. 
 - Copy the project URL as displayed.
 - If you're running Windows Operating System, open your command prompt. On Linux, Open your terminal.
 - Change the current working directory to the location where you want the cloned directory to be made. Leave as it is if the current location is where you want the project to be.
 - Type `git clone`, and then paste the URL you copied in Step 3.
-- Press Enter. Your local clone will be created.
+`$ git clone https://github.com/teekaytech/Tic-Tac-Toe`
+- Press Enter. Your local copy will be created.
 
 Please Note that you must have github installed on your PC, this can be done [here](https://gist.github.com/derhuerst/1b15ff4652a867391f03).
 
@@ -31,7 +32,7 @@ After cloning on your computer, open the folder using your terminal/command prom
 Tic-tac-toe (American English), noughts and crosses (British English), or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. [read-more](https://en.wikipedia.org/wiki/Tic-tac-toe)
 
 ### How to play
-- When the game is started (`bin/main.rb`), the game prompts the two players to enter their names, after which the game displays the board and requests the first player to make a move.<br>
+- When the game is started (`bin/main.rb`), the game prompts the two players to enter their names simultaneously, after which the game displays the board and requests the first player to make a move.<br>
 ![screenshot](/assets/img/shot1.png)
 
 - The game board is a 3 x 3 matrix consisting of numbers from 1 to 9.
@@ -39,7 +40,7 @@ Tic-tac-toe (American English), noughts and crosses (British English), or Xs and
 - For a player to have a valid move, the player must select one of the available numbers on the board. Anything aside that represents an invalid move.<br>
 ![screenshot](/assets/img/shot2.png)
 
-- Any cell of the board consisting of player move identifiers cannot be reselected. If selected, it is counted as an inalid move and such player is prompted to reselect/remake move as seen above.
+- Any cell of the board consisting of player move identifiers (`X` or `O`) cannot be reselected. If selected, it is counted as an inalid move and such player is prompted to reselect/remake move as seen above.
 
 - The players make moves one after the other. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner.<br>
 ![screenshot](/assets/img/shot3.png)
@@ -47,7 +48,7 @@ Tic-tac-toe (American English), noughts and crosses (British English), or Xs and
 - If no player succeed in making the above arrangement till all moves are made, the game is ended in a draw.
 ![screenshot](/assets/img/shot4.png)
 
-- If the players decide to replay, they can press any key to continue or press 'N' to stop the game.
+- If the players decide to replay, they can press any key to continue or press `N` to stop the game.
 
 ## Author
 
