@@ -1,75 +1,77 @@
 #!/usr/bin/env ruby
+require './lib/game.rb'
+require './lib/player.rb'
+require './lib/board.rb'
 
-puts 'Welcome to Tic Tac Toe!'
-print 'Enter player 1 name: '
-player_one = gets.chomp
-
-print 'Good. Enter player 2 name: '
-player_two = gets.chomp
-
-puts "\nPlayer 1 is #{player_one} using symbol X. \nPlayer 2 is #{player_two} using symbol O. \n\nLet's Play!"
-
-# A game board will be displayed to the user, consisting of numbers from 1 to 9 (valid moves)
-moves = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-# We also have arrays that stores the values of selected moves by the players
-p1_move = []
-p2_move = []
-
-winning_logic = true # this logic consists of instructions for determining if a move wins the game or ends in draw.
-game_on = true # this will be used to terminate the loop.
-puts "\nWith each boxes displayed from 1 to 9, each player can type in a value >=1 and <=9"
-
-while game_on
-  p moves # displays the board for the first player
-  print "#{player_one}, select your move: "
-  input = gets.chomp.to_i
-  # the check below ensures that user input is within 1 - 9 to be displayed on the board
-  if moves.any?(input)
-    # After a move, a check is run to see if the move have selected. If not, the move is displayed on the board
-    puts 'Valid Move!'
-    p1_move << input
-    temp = 0
-    moves.each { |val| temp = moves.index(val) if val == input }
-    moves[temp] = 'X'
-    # displays updated game board for the next player to select his/her move.
-  else
-    print 'Invalid move, try again! '
-  end
-  # the above if statement is looped and counted as a single move until the player selects a valid move.
-
-  p moves # displays the board for the second player
-  print "#{player_two}, select your move: "
-  input = gets.chomp.to_i
-  if moves.any?(input)
-    puts 'Valid Move!'
-    p2_move << input
-    temp = 0
-    moves.each { |val| temp = moves.index(val) if val == input }
-    moves[temp] = 'O'
-  else
-    print 'Invalid move, try again! '
-  end
-  # the code above (line 37 - 44) is synonymous to line 24 - 34.
-  # When implementing the logic, it will be used as a method
-
-  game_on = false if p1_move == winning_logic || p2_move == winning_logic
-  # the above logic will be elaborated in the next milestone.
-
-  # If there is no winner and all rounds have passed, we return draw and end the game
-  if moves.any?(Integer) == false
-    game_on = false
-    puts 'The game ended in a draw!'
-  end
+def initiate_move(player)
+  print "#{player}, select your move: "
+  gets.chomp.to_i
 end
 
-puts "#{player_one} here are your moves: #{p1_move}"
-puts "#{player_two} here are your moves: #{p2_move}"
+def initiate_check_draw(game, board)
+  return true unless game.check_draw == true
 
-# After all the rounds, we check if there is a match vertically,horizontally or diagonally.
+  puts board.display_board(game.moves)
+  puts game.draw_message
+  false
+end
 
-# If there is a match in any of the moves by either player, we announce the player as the winner.
+def winner(game, player, board)
+  return false unless game.increment_rounds >= 5
 
-# If there is no match, we announce the encounter as draw.
+  return false unless game.check_win
 
-# We have to confirm if the players will like to play again. If true, we loop the game, else we stop.
+  puts board.display_board(game.moves)
+  puts player.win_message
+  true
+end
+
+puts 'Welcome to Tic Tac Toe!'
+
+print 'Enter player 1 name: '
+player1 = Player.new(gets.chomp)
+print 'Enter player 2 name: '
+player2 = Player.new(gets.chomp, 2)
+
+puts "Symbol #{player1.icon} represents #{player1.name} moves on the game board."
+puts "Symbol #{player2.icon} represents #{player2.name} moves on the game board."
+puts "Select a cell on the gameboard by entering the number displayed in the cell. \nLets Start...\n\n"
+
+loop do
+  board_data = (1..9).to_a
+  game = Game.new(board_data)
+  game_on = true
+  board = Board.new(board_data)
+
+  while game_on
+    puts board.display_board(game.moves)
+    loop do
+      move = initiate_move(player1.name)
+      processed_move = game.validate_move(move, player1.icon)
+      break unless processed_move == false
+
+      puts player1.false_move_message
+      puts board.display_board(game.moves)
+    end
+    game.increment_rounds
+    break if winner(game, player1, board)
+
+    break unless initiate_check_draw(game, board) == true
+
+    loop do
+      puts board.display_board(game.moves)
+      move = initiate_move(player2.name)
+      processed_move = game.validate_move(move, player2.icon)
+      break unless processed_move == false
+
+      puts player2.false_move_message
+    end
+    game.increment_rounds
+    break if winner(game, player2, board)
+
+    break unless initiate_check_draw(game, board) == true
+  end
+
+  print "Will you like to replay? ('Y' = yes, 'N' = No): "
+  break if gets.chomp.upcase == 'N'
+end
