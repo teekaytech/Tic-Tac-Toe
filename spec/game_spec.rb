@@ -65,8 +65,16 @@ describe Game do
   end
 
   describe '#check_draw' do
-    it 'returns false because all moves are still valid' do
-      expect(game.check_draw).to be false
+    let(:draw) { Game.new(%w[X O X X O X O X O]) }
+
+    context 'if there is no winner' do
+      it 'returns false because all moves are still valid' do
+        expect(game.check_draw).to be false
+      end
+
+      it 'returns false if there are no more valid moves' do
+        expect(draw.check_draw).to be true
+      end
     end
   end
 
